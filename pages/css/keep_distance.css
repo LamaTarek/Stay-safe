@@ -1,0 +1,22 @@
+.distance_section{
+    text-align: center;
+    width:80%;
+    margin: auto;
+}
+.header{
+    margin: 30px 0;
+}
+.header span{
+    font-size: 60px;
+    color: #36622b;
+}
+.header .content{
+    font-size: 25px;
+    color: #729d39;
+    line-height: 30px;
+}
+a{
+    color: #729d39;
+    font-size: 25px;
+}
+

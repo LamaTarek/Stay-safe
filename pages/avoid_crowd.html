@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Avoid Crowds</title>
+    <link rel="stylesheet" href="../pages/css/avoid_crowd.css">
+    <script>
+        //Globa variables
+        var canvas, ctx;
+        var image1;
+        var image2;
+        var image3;
+        var x1 = 660;
+        var x2 = 540;
+        var x3 = 460;
+        var counter = 0;
+
+        function init() {
+            canvas = document.getElementById("main")
+            ctx = canvas.getContext("2d");
+            //image1
+            image1 = new Image();
+            image1.src = "../photos/p3.png";
+            image1.onload = draw;
+            //image2
+            image2 = new Image();
+            image2.src = "../photos/p2.1.png";
+            image2.onload = draw;
+            //image3
+            image3 = new Image();
+            image3.src = "../photos/p3.png";
+            image3.onload = draw;
+            //animation request
+            window.requestAnimationFrame(crowd);
+        }
+        //draw images 
+        function draw() {
+            ctx.drawImage(image1, x1, 140);
+            ctx.drawImage(image2, x2, 80);
+            ctx.drawImage(image3, x3, 140);
+        }
+        function crowd() {
+            //clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            //set new location
+            x1 += 1;
+            x3 -= 1;
+            counter++;
+            //draw
+            draw();
+            if (counter <= 150) {
+                window.requestAnimationFrame(crowd);
+            }
+        }
+
+    </script>
+</head>
+
+<body onload="init()" style="background-image: url(../photos/background.png);background-size: cover">
+    <div class="crowd_section">
+        <div class="header">
+            <span>4.Avoid Crowds</span>
+            <p class="content">
+                Being in crowds like in restaurants, fitness centers, or movie theaters puts you at higher risk for
+                COVID-19.
+                Avoid indoor spaces that do not offer fresh air from the outdoors as much as possible.
+                If indoors, bring in fresh air by opening windows and doors, if possible.
+            </p>
+        </div>
+        <div class="my_canvas">
+            <!--canvas-->
+            <canvas id="main" width="1200px" height="470px"
+                style="border: 5px solid #729d39;background-color: #FEFEFE"></canvas>
+        </div>
+        <footer>
+            <a href="contact.html">Almost Done..</a>
+        </footer>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wash your hands</title>
+    <link rel="stylesheet" href="../pages/css/wash_hand.css">
+    <script>
+        //Global variables
+        var canvas, ctx;
+        var image1;
+        var image2;
+        var image3;
+        var x1 = 440;
+        var x2 = 400;
+        var x3 = 450;
+        var y3 = 5;
+        var speed = 1;
+        var counter = 0;
+
+        function init() {
+            canvas = document.getElementById("main")
+            ctx = canvas.getContext("2d");
+            //image1
+            image1 = new Image();
+            image1.src = "../photos/right_hand.png";
+            image1.onload = draw;
+            //image2
+            image2 = new Image();
+            image2.src = "../photos/right_hand.png";
+            image2.onload = draw;
+            //image3
+            image3 = new Image();
+            image3.src = "../photos/bubles.png";
+            image3.onload = draw;
+        }
+
+        //draw images
+        function draw() {
+            ctx.drawImage(image1, x1, 35, 300, 300);
+            ctx.drawImage(image2, x2, 60, 300, 300);
+            ctx.drawImage(image3, x3, y3, 450, 450);
+        }
+
+        setInterval(function () {
+            //clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            counter++;
+            //set new location
+            x1 += speed;
+            x2 -= speed;
+            y3 += speed;
+            if (counter == 10) {
+                counter = 0;
+                speed = -speed;
+            }
+            //draw
+            draw();
+        }
+            , 50)
+
+
+    </script>
+</head>
+
+<body onload="init()" style="background-image: url(../photos/background.png);background-size: cover">
+    <div class="wash_section">
+        <div class="header">
+            <span>3.Wash your hands</span>
+            <p class="content">
+                Wash your hands often with soap and water for at least 20 seconds, especially after you have been in a
+                public place, or after blowing your nose, coughing, or sneezing.Practicing good hygiene is an important
+                habit that helps prevent the spread of COVID-19.
+            </p>
+        </div>
+        <div class="my_canvas">
+            <!--canvas-->
+            <canvas id="main" width="1200px" height="470px"
+                style="border: 5px solid #729d39;background-color: #FEFEFE"></canvas>
+        </div>
+        <footer>
+            <a href="avoid_crowd.html">Next Step..</a>
+        </footer>
+
+    </div>
+</body>
+
+</html>

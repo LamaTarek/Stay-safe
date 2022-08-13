@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wear a mask</title>
+    <link rel="stylesheet" href="../pages/css/mask.css">
+    <script>
+        ///global variables
+        var canvas, ctx;
+        var image1, image2, image3, image4, image5, image6, image7;
+        var y1 = 300, y2 = 40, y3 = 40, y4 = 250, y5 = 200, y6 = 200;
+        var speed = 1;
+        var counter = 0;
+
+        function init() {
+            canvas = document.getElementById("main")
+            ctx = canvas.getContext("2d");
+            //img1
+            image1 = new Image();
+            image1.src = "../photos/virus.png";
+            image1.onload = draw;
+
+            //img2
+            image2 = new Image();
+            image2.src = "../photos/virus.png";
+
+            //img3
+            image3 = new Image();
+            image3.src = "../photos/virus.png";
+
+            //img4
+            image4 = new Image();
+            image4.src = "../photos/virus.png";
+
+            //img5
+            image5 = new Image();
+            image5.src = "../photos/virus.png";
+
+            //img6
+            image6 = new Image();
+            image6.src = "../photos/virus.png";
+
+            //img7
+            image7 = new Image();
+            image7.src = "../photos/person.png";
+        }
+        
+        //draw images
+        function draw() {
+            ctx.drawImage(image1, 60, y1, 180, 180);
+            ctx.drawImage(image2, 1000, y2, 150, 150);
+            ctx.drawImage(image3, 90, y3, 130, 130);
+            ctx.drawImage(image4, 1000, y4, 170, 170);
+            ctx.drawImage(image5, 800, y5, 150, 150);
+            ctx.drawImage(image6, 250, y6, 150, 150);
+            ctx.drawImage(image7, 440, 85, 299, 388);
+        }
+
+        setInterval(function () {
+            //clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            counter++;
+            //set new location
+            y1 += speed;
+            y2 += speed;
+            y3 += speed;
+            y4 += speed;
+            y5 += speed;
+            y6 += speed;
+            if (counter == 10) {
+                counter = 0;
+                speed = -speed;
+            }
+            //draw
+            draw();
+        }
+            , 50)
+    </script>
+</head>
+
+<body onload="init()" style="background-image: url(../photos/background.png);background-size: cover;">
+    <div class="mask_section">
+        <div class="header">
+            <span>2.Wear a mask</span>
+            <p class="content">
+                Face masks have become essential accessories in protecting yourself and others from contracting
+                COVID-19.
+                Make wearing a mask a normal part of being around other people. The appropriate use, storage and
+                cleaning or disposal of masks are essential to make them as effective as possible.
+            </p>
+        </div>
+        <div class="my_canvas">
+            <!--canvas-->
+            <canvas id="main" width="1200px" height="470px"
+                style="border: 5px solid #729d39;background-color: #FEFEFE"></canvas>
+        </div>
+        <footer>
+            <a href="wash_hand.html">Next Step..</a>
+        </footer>
+
+    </div>
+</body>
+
+</html>

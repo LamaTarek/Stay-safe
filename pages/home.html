@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Stay Safe!</title>
+    <link rel="stylesheet" href="../pages/css/home.css">
+    <script>
+        ///global variables
+        var canvas, ctx;
+        var image1;
+        var y1 = 100;
+        var speed = 1;
+        var counter = 0;
+
+        function init() {
+            canvas = document.getElementById("main")
+            ctx = canvas.getContext("2d");
+            //img1
+            image1 = new Image();
+            image1.src = "../photos/corona_virus.png";
+            image1.onload = draw;
+        }
+        //draw image
+        function draw() {
+            ctx.drawImage(image1, 150, y1, 530, 640);
+        }
+
+        setInterval(function () {
+            //clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            //set new location
+            counter++;
+            y1 += speed;
+            if (counter == 10) {
+                counter = 0;
+                speed = -speed;
+            }
+            //draw
+            draw();
+        }
+            , 50)
+
+    </script>
+</head>
+<html>
+
+<body onload="init()" style="background-image: url(../photos/background.png);background-size: cover;">
+    <div class="home_section">
+        <div class="container">
+            <div class="left">
+                <div class="header">
+                    <span>Hi everyone</span>
+                </div>
+                <div class="content">
+                    I hope you are all in good health and doing fine during the pandemic,
+                    I came today to share with you some simple steps to help you preserve your health and the people you
+                    love during this pandemic,which I hope allah will get us all out of soon :)
+                    I hope you enjoy the journey and benefit as well.<br>
+                    <a href="keep_distance.html">Let's get started!</a>
+                </div>
+            </div>
+            <div class="right">
+                <canvas id="main" width="739.6" height="760px"></canvas>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

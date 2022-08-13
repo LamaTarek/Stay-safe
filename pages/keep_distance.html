@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Keep distance</title>
+    <link rel="stylesheet" href="../pages/css/keep_distance.css">
+    <script>
+        //Global variables
+        var canvas, ctx;
+        var image1;
+        var image2;
+        var x1 = 610;
+        var x2 = 500;
+        var counter = 0;
+
+        function init() {
+            canvas = document.getElementById("main")
+            ctx = canvas.getContext("2d");
+            //imgage1
+            image1 = new Image();
+            image1.src = "../photos/p1.png";
+            image1.onload = draw;
+            //image2
+            image2 = new Image();
+            image2.src = "../photos/p3.png";
+            image2.onload = draw;
+            //aniamtion request
+            window.requestAnimationFrame(distance);
+        }
+
+        function draw() {
+            ctx.drawImage(image1, x1, 150);
+            ctx.drawImage(image2, x2, 150);
+        }
+        function distance() {
+            //clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            //set new location
+            x1 += 1;
+            x2 -= 1;
+            counter++;
+            //draw
+            draw();
+            if (counter <= 150) {
+                window.requestAnimationFrame(distance);
+            }
+        }
+
+    </script>
+</head>
+
+<body onload="init()" style="background-image: url(../photos/background.png);background-size: cover;">
+    <div class="distance_section">
+        <div class="header">
+            <span>1.Practice social distancing</span>
+            <p class="content">
+                Since close person-to-person contact appears to be the main source of transmission, social distancing
+                remains a key way to mitigate spread. it is recommended to maintain a distance of approximately 6 feet
+                from others in public places. This distance will help you avoid direct contact with respiratory droplets
+                produced by coughing or sneezing.
+            </p>
+        </div>
+        <div class="my_canvas">
+            <!--canvas-->
+            <canvas id="main" width="1200px" height="470px" style="border: 5px solid #729d39;background-color: #FEFEFE""></canvas>
+        </div>
+        <footer>
+            <a href=" mask.html">Next Step..</a>
+                </footer>
+
+        </div>
+</body>
+
+</html>
